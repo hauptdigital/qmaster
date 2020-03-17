@@ -41,6 +41,20 @@
       "answerTwo": "nay",
       "answerThree": "okay nay",
       "id": 6
+    },
+    {
+      "question": "What is the best game?",
+      "answerOne": "World of Warcraft",
+      "answerTwo": "Pokémon Stadium",
+      "answerThree": "League of Legends",
+      "id": 7
+    },
+    {
+      "question": "Was sollen wir als Bergfest machen?",
+      "answerOne": "Pizza",
+      "answerTwo": "Park",
+      "answerThree": "Pizza & Park",
+      "id": 8
     }
   ]
 }

@@ -5,7 +5,7 @@ import Button from '../components/Button';
 import Container from '../components/Container';
 
 const Input = styled.input`
-  background-color: #3e3c41;
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
   outline: none;
@@ -13,29 +13,43 @@ const Input = styled.input`
   font-size: 1.125em;
 `;
 const VoteHeader = styled.div`
-  background-color: #3e3c41;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  outline: none;
+  padding: 1em;
+  text-align: center;
+  width: 100%;
+  font-size: 1.125em;
+`;
+const VoteInput = styled(Input)`
+  display: none;
+`;
+
+const VoteInputCheck = styled.div`
+  background: ${props => (props.checked ? 'white' : 'transparent')};
+  width: ${props => (props.checked ? '18px' : '0px')};
+  height: ${props => (props.checked ? '18px' : '0px')};
+  border-radius: 100px;
+  transition: 0.5s;
+  align-self: center;
+`;
+
+const VoteInputLabel = styled.label`
+  display: flex;
+  cursor: pointer;
+  justify-content: space-between;
+  padding: 1em;
+  margin: 1em 0em;
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
   outline: none;
   width: 100%;
   font-size: 1.125em;
-`;
-const VoteInput = styled(Input)`
-  text-align: center;
-  padding: 1em 0em;
-`;
-
-const VoteInputCheck = styled.div`
-  background: ${props => (props.checked ? 'white' : 'transparent')};
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.25);
   }
-  width: 18px;
-  height: 18px;
-  border-radius: 35px;
-`;
-
-const VoteInputLabel = styled.label`
-  cursor: pointer;
-  margin: 0em 0em;
 `;
 
 const VoteInputList = styled.ul`
