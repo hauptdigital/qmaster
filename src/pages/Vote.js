@@ -67,7 +67,6 @@ const POLLS_API_URL =
 function Vote() {
   const { pollId } = useParams();
   const history = useHistory();
-  console.log(history);
   const [poll, setPoll] = React.useState(null);
   const [answer, setAnswer] = React.useState(null);
 
@@ -76,6 +75,7 @@ function Vote() {
       const response = await fetch(`${POLLS_API_URL}/${pollId}`);
       const poll = await response.json();
       setPoll(poll);
+      console.log(poll);
     }
 
     getPoll();
@@ -83,10 +83,9 @@ function Vote() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-
     const newPoll = { ...poll };
     newPoll.votes.push(answer);
-
+    console.log(newPoll);
     await fetch(`${POLLS_API_URL}/${pollId}`, {
       method: 'PATCH',
       headers: {
