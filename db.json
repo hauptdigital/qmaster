@@ -1,3 +1,11 @@
 {
-  "polls": []
+  "polls": [
+    {
+      "question": "What do you want to eat?",
+      "answerOne": "Pizza",
+      "answerTwo": "Burger",
+      "answerThree": "Thai",
+      "id": 1
+    }
+  ]
 }
