@@ -1,6 +1,7 @@
+import React from 'react';
 import styled from '@emotion/styled';
 
-const Input = styled.input`
+export const Input = styled.input`
   background-color: #3e3c41;
   color: white;
   border: none;
@@ -9,28 +10,23 @@ const Input = styled.input`
   font-size: 1.125em;
 `;
 
-const PollQuestionInput = styled(Input)`
+export const PollQuestionInput = styled(Input)`
   text-align: center;
   padding: 1em 0em;
 `;
 
-const PollOptionInput = styled(Input)`
+export const PollOptionInput = styled(Input)`
   text-align: left;
   border-radius: 35px 0px 0px 35px;
   padding: 1em 1.5em;
 `;
 
-function Input(props) {
+export function PollOptionVoteInputLabel({ children, ...other }) {
+  return <label {...other}>{children}</label>;
+}
+
+export function PollOptionVoteInput(props) {
   return <input {...props} />;
 }
 
-function PollQuestionInput(props) {
-  return <input {...props} />;
-}
-
-function PollOptionInput(props) {
-  return <input {...props} />;
-}
-
-export default PollQuestionInput;
-export default PollOptionInput;
+export default Input;
