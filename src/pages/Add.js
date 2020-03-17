@@ -43,14 +43,17 @@ function Add() {
       answerTwo: answerTwo,
       answerThree: answerThree
     };
-
-    const response = await fetch('http://localhost:4000/polls', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(poll)
-    });
+    const response = await fetch(
+      process.env.REACT_APP_POLLS_API ||
+        'https://my-json-server.typicode.com/hauptdigital/qmaster/polls',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(poll)
+      }
+    );
     const createdPoll = await response.json();
     console.log(createdPoll);
     alert(`Created poll with the id ${createdPoll.id}`);
