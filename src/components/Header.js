@@ -1,13 +1,22 @@
 import React from 'react';
-import './Header.css';
-import Logo from './logo.png';
+import styled from '@emotion/styled';
+import Logo from './Logo.js';
+import LogoImg from './logo.png';
 
-function Header() {
+const Header = styled.header`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: white;
+`;
+
+function appHeader() {
   return (
-    <header className="header">
-      <img className="logo" src={Logo} alt="Q-Master logo" />
-    </header>
+    <Header>
+      <Logo className="logo" src={LogoImg} alt="Q-Master logo" />
+    </Header>
   );
 }
 
-export default Header;
+export default appHeader;

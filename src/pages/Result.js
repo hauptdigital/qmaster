@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Card from '../components/Card';
+import Container from '../components/Container';
 
 function Result() {
   return (
-    <Card>
+    <Container>
       Result <Link to="/">Start new question</Link>
-    </Card>
+    </Container>
   );
 }
 

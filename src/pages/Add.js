@@ -1,7 +1,32 @@
 import React from 'react';
-import Card from '../components/Card';
+import Container from '../components/Container';
 import './Add.css';
 import Button from '../components/Button';
+import styled from '@emotion/styled';
+
+const Input = styled.input`
+  background-color: #3e3c41;
+  color: white;
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 1.125em;
+`;
+
+const PollQuestionInput = styled(Input)`
+  text-align: center;
+  padding: 1em 0em;
+`;
+
+const PollOptionInput = styled(Input)`
+  text-align: left;
+  border-radius: 35px 0px 0px 35px;
+  padding: 1em 1.5em;
+`;
+
+const PollOptionInputListItem = styled.li`
+  margin: 1em 0em;
+`;
 
 function Add() {
   const [question, setQuestion] = React.useState('');
@@ -23,10 +48,9 @@ function Add() {
   }
 
   return (
-    <Card>
-      <form className="add-form" onSubmit={handleSubmit}>
-        <input
-          className="add-form__input-question"
+    <Container>
+      <form onSubmit={handleSubmit}>
+        <PollQuestionInput
           type="text"
           placeholder="What do you want to know?"
           value={question}
@@ -35,9 +59,8 @@ function Add() {
           }}
         />
         <ol>
-          <li className="add-form__inputListItem">
-            <input
-              className="add-form__input-answer"
+          <PollOptionInputListItem>
+            <PollOptionInput
               type="text"
               placeholder="Option 1"
               value={answerOne}
@@ -45,10 +68,9 @@ function Add() {
                 setAnswerOne(event.target.value);
               }}
             />
-          </li>
-          <li className="add-form__inputListItem">
-            <input
-              className="add-form__input-answer"
+          </PollOptionInputListItem>
+          <PollOptionInputListItem>
+            <PollOptionInput
               type="text"
               placeholder="Option 2"
               value={answerTwo}
@@ -56,10 +78,9 @@ function Add() {
                 setAnswerTwo(event.target.value);
               }}
             />
-          </li>
-          <li className="add-form__inputListItem">
-            <input
-              className="add-form__input-answer"
+          </PollOptionInputListItem>
+          <PollOptionInputListItem>
+            <PollOptionInput
               type="text"
               placeholder="Option 3"
               value={answerThree}
@@ -67,11 +88,11 @@ function Add() {
                 setAnswerThree(event.target.value);
               }}
             />
-          </li>
+          </PollOptionInputListItem>
         </ol>
         <Button>Create Poll</Button>
       </form>
-    </Card>
+    </Container>
   );
 }
 
