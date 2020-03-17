@@ -3,6 +3,7 @@ import Container from '../components/Container';
 import './Add.css';
 import Button from '../components/Button';
 import styled from '@emotion/styled';
+import { useHistory } from 'react-router-dom';
 
 const Input = styled.input`
   background-color: #3e3c41;
@@ -29,6 +30,8 @@ const PollOptionInputListItem = styled.li`
 `;
 
 function Add() {
+  const history = useHistory();
+
   const [question, setQuestion] = React.useState('');
   const [answerOne, setAnswerOne] = React.useState('');
   const [answerTwo, setAnswerTwo] = React.useState('');
@@ -55,8 +58,7 @@ function Add() {
       }
     );
     const createdPoll = await response.json();
-    console.log(createdPoll);
-    alert(`Created poll with the id ${createdPoll.id}`);
+    history.push(`polls/${createdPoll.id}/vote/`);
   }
 
   return (
