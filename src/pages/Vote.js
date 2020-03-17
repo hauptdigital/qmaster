@@ -26,11 +26,15 @@ const VoteInput = styled(Input)`
 `;
 
 const VoteInputCheck = styled.div`
+  background: ${props => (props.checked ? 'white' : 'transparent')};
+  }
   width: 18px;
   height: 18px;
+  border-radius: 35px;
 `;
 
 const VoteInputLabel = styled.label`
+  cursor: pointer;
   margin: 0em 0em;
 `;
 
@@ -94,7 +98,7 @@ function Vote() {
                 checked={answer === 'answerOne'}
                 onChange={event => setAnswer(event.target.value)}
               />
-              <VoteInputCheck></VoteInputCheck>
+              <VoteInputCheck checked={answer === 'answerOne'}></VoteInputCheck>
             </VoteInputLabel>
           </VoteInputListItem>
           <VoteInputListItem>
@@ -107,7 +111,7 @@ function Vote() {
                 checked={answer === 'answerTwo'}
                 onChange={event => setAnswer(event.target.value)}
               />
-              <VoteInputCheck></VoteInputCheck>
+              <VoteInputCheck checked={answer === 'answerTwo'}></VoteInputCheck>
             </VoteInputLabel>
           </VoteInputListItem>
           <VoteInputListItem>
@@ -120,7 +124,9 @@ function Vote() {
                 checked={answer === 'answerThree'}
                 onChange={event => setAnswer(event.target.value)}
               />
-              <VoteInputCheck></VoteInputCheck>
+              <VoteInputCheck
+                checked={answer === 'answerThree'}
+              ></VoteInputCheck>
             </VoteInputLabel>
           </VoteInputListItem>
         </VoteInputList>
