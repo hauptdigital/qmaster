@@ -104,6 +104,16 @@
         "answerOne"
       ],
       "id": 11
+    },
+    {
+      "question": "Okay",
+      "answerOne": "Das ist ein Test",
+      "answerTwo": "Okay2",
+      "answerThree": "Oka3",
+      "votes": [
+        "answerTwo"
+      ],
+      "id": 12
     }
   ]
 }
