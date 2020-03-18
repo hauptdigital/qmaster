@@ -48,7 +48,8 @@ function Add() {
       question: question,
       answerOne: answerOne,
       answerTwo: answerTwo,
-      answerThree: answerThree
+      answerThree: answerThree,
+      votes: []
     };
     const response = await fetch(
       process.env.REACT_APP_POLLS_API ||

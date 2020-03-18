@@ -72,6 +72,16 @@
         "answerOne",
         "answerTwo"
       ]
+    },
+    {
+      "question": "Funktioniert der Q-Master?",
+      "answerOne": "Ja",
+      "answerTwo": "Nein",
+      "answerThree": "Vielleicht",
+      "votes": [
+        "answerTwo"
+      ],
+      "id": 9
     }
   ]
 }
