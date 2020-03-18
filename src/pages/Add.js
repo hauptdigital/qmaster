@@ -1,20 +1,18 @@
 import React from 'react';
 import Container from '../components/Container';
-import './Add.css';
 import Button from '../components/Button';
 import styled from '@emotion/styled';
 import { useHistory } from 'react-router-dom';
 
 const Input = styled.input`
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  background-color: ${props => props.theme.colors.secondary};
+  color: ${props => props.theme.colors.primary};
   border: none;
   outline: none;
   width: 100%;
   font-size: 1.125em;
   &:hover {
-    background-color: rgba(0, 0, 0, 0.25);
-    color: white;
+    background-color: ${props => props.theme.colors.secondaryHover};
   }
 `;
 

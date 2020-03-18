@@ -70,7 +70,8 @@
         "answerThree",
         "answerThree",
         "answerOne",
-        "answerTwo"
+        "answerTwo",
+        "answerOne"
       ]
     },
     {
@@ -82,6 +83,27 @@
         "answerTwo"
       ],
       "id": 9
+    },
+    {
+      "question": "Test",
+      "answerOne": "Funktioniert noch alles? ",
+      "answerTwo": "Ist das so?",
+      "answerThree": "Ja?",
+      "votes": [
+        "answerTwo",
+        "answerTwo"
+      ],
+      "id": 10
+    },
+    {
+      "question": "Test",
+      "answerOne": "okay",
+      "answerTwo": "okay",
+      "answerThree": "okay",
+      "votes": [
+        "answerOne"
+      ],
+      "id": 11
     }
   ]
 }

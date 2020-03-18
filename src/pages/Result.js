@@ -4,8 +4,8 @@ import styled from '@emotion/styled';
 import Container from '../components/Container';
 
 const ResultHeader = styled.div`
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  background-color: ${props => props.theme.colors.secondary};
+  color: ${props => props.theme.colors.primary};
   border: none;
   outline: none;
   padding: 1em;
@@ -23,8 +23,8 @@ const PollResultTitle = styled.div`
   justify-content: space-between;
   padding: 1em;
   margin: 1em 0em;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  background-color: ${props => props.theme.colors.secondary};
+  color: ${props => props.theme.colors.primary};
   border: none;
   outline: none;
   width: 40%;
@@ -36,22 +36,14 @@ const PollResultBar = styled.div`
   justify-content: space-between;
   padding: 1em 0.25em;
   margin: 1em 0em;
-  background: linear-gradient(
-    45deg,
-    #405de6,
-    #5851db,
-    #833ab4,
-    #c13584,
-    #e1306c,
-    #fd1d1d
-  );
+  background: ${props => props.theme.colors.gradient};
   border-radius: 0px 100px 100px 0px;
   color: white;
   border: none;
   outline: none;
   width: ${props => props.percentage * 0.6}%;
   font-size: 1em;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid ${props => props.theme.colors.secondary};
   align-items: center;
   transition: 2s;
   ${props =>
