@@ -54,7 +54,34 @@
       "answerOne": "Pizza",
       "answerTwo": "Park",
       "answerThree": "Pizza & Park",
-      "id": 8
+      "id": 8,
+      "votes": [
+        "answerTwo",
+        "answerThree",
+        "answerOne",
+        "answerOne",
+        "answerThree",
+        "answerThree",
+        "answerTwo",
+        "answerTwo",
+        "answerThree",
+        "answerThree",
+        "answerThree",
+        "answerThree",
+        "answerThree",
+        "answerOne",
+        "answerTwo"
+      ]
+    },
+    {
+      "question": "Funktioniert der Q-Master?",
+      "answerOne": "Ja",
+      "answerTwo": "Nein",
+      "answerThree": "Vielleicht",
+      "votes": [
+        "answerTwo"
+      ],
+      "id": 9
     }
   ]
 }
