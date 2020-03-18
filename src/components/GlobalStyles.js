@@ -1,6 +1,7 @@
 import React from 'react';
 import { Global, css } from '@emotion/core';
 import dark from '../themes/dark';
+import light from '../themes/light';
 
 function GlobalStyles() {
   return (
@@ -15,7 +16,7 @@ function GlobalStyles() {
 
           body {
             margin: 0;
-            background: ${dark.colors.gradient};
+            background: ${light.colors.gradient};
             height: 100vh;
             font-family: Arial, Helvetica, sans-serif;
           }

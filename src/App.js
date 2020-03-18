@@ -3,6 +3,7 @@ import './App.css';
 import GlobalStyles from './components/GlobalStyles';
 import { ThemeProvider } from 'emotion-theming';
 import dark from './themes/dark';
+import light from './themes/light';
 import Header from './components/Header';
 import Add from './pages/Add';
 import Vote from './pages/Vote';
@@ -11,7 +12,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <ThemeProvider theme={dark}>
+    <ThemeProvider theme={light}>
       <Router>
         <GlobalStyles />
         <Header />

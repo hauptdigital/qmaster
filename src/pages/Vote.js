@@ -27,7 +27,8 @@ const VoteInput = styled(Input)`
 `;
 
 const VoteInputCheck = styled.div`
-  background: ${props => (props.checked ? 'white' : 'transparent')};
+  background: ${props =>
+    props.checked ? props.theme.colors.primary : 'transparent'};
   width: ${props => (props.checked ? '18px' : '0px')};
   height: ${props => (props.checked ? '18px' : '0px')};
   border-radius: 100px;
