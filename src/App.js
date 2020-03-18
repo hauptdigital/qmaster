@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import GlobalStyles from './components/Globalstyles';
+import GlobalStyles from './components/GlobalStyles';
 import Header from './components/Header';
 import Add from './pages/Add';
 import Vote from './pages/Vote';
