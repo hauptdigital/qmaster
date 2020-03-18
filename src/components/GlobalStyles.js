@@ -1,13 +1,11 @@
 import React from 'react';
 import { Global, css } from '@emotion/core';
-import dark from '../themes/dark';
-import light from '../themes/light';
 
 function GlobalStyles() {
   return (
     <>
       <Global
-        styles={css`
+        styles={theme => css`
           *,
           *:after,
           *:before {
@@ -16,7 +14,7 @@ function GlobalStyles() {
 
           body {
             margin: 0;
-            background: ${light.colors.gradient};
+            background: ${theme.colors.gradient};
             height: 100vh;
             font-family: Arial, Helvetica, sans-serif;
           }
