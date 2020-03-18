@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import GlobalStyles from './components/GlobalStyles';
 import Header from './components/Header';
 import Add from './pages/Add';
 import Vote from './pages/Vote';
@@ -9,6 +10,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 function App() {
   return (
     <Router>
+      <GlobalStyles />
       <Header />
       <main className="main">
         <Switch>
