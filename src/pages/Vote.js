@@ -5,16 +5,16 @@ import Button from '../components/Button';
 import Container from '../components/Container';
 
 const Input = styled.input`
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  background-color: ${props => props.theme.colors.secondary};
+  color: ${props => props.theme.colors.primary};
   border: none;
   outline: none;
   width: 100%;
   font-size: 1.125em;
 `;
 const VoteHeader = styled.div`
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  background-color: ${props => props.theme.colors.secondary};
+  color: ${props => props.theme.colors.primary};
   border: none;
   outline: none;
   padding: 1em;
@@ -41,14 +41,14 @@ const VoteInputLabel = styled.label`
   justify-content: space-between;
   padding: 1em;
   margin: 1em 0em;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  background-color: ${props => props.theme.colors.secondary};
+  color: ${props => props.theme.colors.primary};
   border: none;
   outline: none;
   width: 100%;
   font-size: 1.125em;
   &:hover {
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: ${props => props.theme.colors.secondaryHover};
   }
 `;
 
