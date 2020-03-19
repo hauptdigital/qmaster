@@ -52,10 +52,6 @@ const PollResultBar = styled.div`
     props.percentage > 50 ? 'box-shadow: 0px 0px 20px 0px rgb(0, 0, 0);' : ''};
 `;
 
-const POLLS_API_URL =
-  process.env.REACT_APP_POLLS_API ||
-  'https://my-json-server.typicode.com/hauptdigital/qmaster/polls';
-
 function Result() {
   const { pollId } = useParams();
   const [poll, setPoll] = React.useState(null);
