@@ -6,7 +6,8 @@
       "answerTwo": "LoL",
       "answerThree": "SC2",
       "votes": [
-        "answerTwo"
+        "answerTwo",
+        "answerOne"
       ],
       "id": 1
     }
