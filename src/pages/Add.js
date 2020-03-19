@@ -4,6 +4,7 @@ import Button from '../components/Button';
 import styled from '@emotion/styled';
 import { useHistory } from 'react-router-dom';
 import { postPoll } from '../api/polls';
+import Loading from '../components/Loading';
 
 const Input = styled.input`
   background-color: ${props => props.theme.colors.secondary};
@@ -39,9 +40,11 @@ function Add() {
   const [answerOne, setAnswerOne] = React.useState('');
   const [answerTwo, setAnswerTwo] = React.useState('');
   const [answerThree, setAnswerThree] = React.useState('');
+  const [isLoading, setLoading] = React.useState(false);
 
   async function handleSubmit(event) {
     event.preventDefault();
+    setLoading(true);
 
     const poll = {
       question: question,
@@ -53,6 +56,10 @@ function Add() {
 
     const createdPoll = await postPoll(poll);
     history.push(`polls/${createdPoll.id}/vote/`);
+  }
+
+  if (isLoading) {
+    return <Loading />;
   }
 
   return (
@@ -98,7 +105,7 @@ function Add() {
             />
           </PollOptionInputListItem>
         </ol>
-        <Button>Create Poll</Button>
+        <Button disabled={isLoading}>Create Poll</Button>
       </form>
     </Container>
   );

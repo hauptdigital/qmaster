@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import Button from '../components/Button';
 import Container from '../components/Container';
 import { getPoll, patchPoll } from '../api/polls';
+import Loading from '../components/Loading';
 
 const Input = styled.input`
   background-color: ${props => props.theme.colors.secondary};
@@ -67,18 +68,28 @@ function Vote() {
   const history = useHistory();
   const [poll, setPoll] = React.useState(null);
   const [answer, setAnswer] = React.useState(null);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   React.useEffect(() => {
-    getPoll(pollId).then(poll => setPoll(poll));
+    setIsLoading(true);
+    getPoll(pollId).then(poll => {
+      setPoll(poll);
+      setIsLoading(false);
+    });
   }, [pollId]);
 
   async function handleSubmit(event) {
     event.preventDefault();
+    setIsLoading(true);
     const newPoll = { ...poll };
     newPoll.votes.push(answer);
 
     await patchPoll(pollId, newPoll);
     history.push(`/polls/${poll.id}`);
+  }
+
+  if (isLoading) {
+    return <Loading />;
   }
 
   return (
@@ -128,7 +139,7 @@ function Vote() {
             </VoteInputLabel>
           </VoteInputListItem>
         </VoteInputList>
-        <Button>Submit vote</Button>
+        <Button disabled={isLoading}>Submit vote</Button>
       </form>
     </Container>
   );
