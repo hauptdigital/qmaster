@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 import Button from '../components/Button';
 import Container from '../components/Container';
 import { getPoll, patchPoll } from '../api/polls';
-import LoadingGif from '../components/Pulse-1s-200px.gif';
 
 const Input = styled.input`
   background-color: ${props => props.theme.colors.secondary};
@@ -63,8 +62,6 @@ const VoteInputListItem = styled.li`
   list-style-type: none;
 `;
 
-const Loading = styled.div``;
-
 function Vote() {
   const { pollId } = useParams();
   const history = useHistory();
@@ -82,6 +79,7 @@ function Vote() {
 
   async function handleSubmit(event) {
     event.preventDefault();
+    setIsLoading(true);
     const newPoll = { ...poll };
     newPoll.votes.push(answer);
 
@@ -140,7 +138,7 @@ function Vote() {
             </VoteInputLabel>
           </VoteInputListItem>
         </VoteInputList>
-        <Button>Submit vote</Button>
+        <Button disabled={isLoading}>Submit vote</Button>
       </form>
     </Container>
   );
