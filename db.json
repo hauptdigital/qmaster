@@ -121,9 +121,21 @@
       "answerTwo": "Option 2",
       "answerThree": "OOOTION 3",
       "votes": [
-        "answerOne"
+        "answerOne",
+        "answerThree",
+        "answerTwo"
       ],
       "id": 13
+    },
+    {
+      "question": "Ein neuer Poll",
+      "answerOne": "Mit 1",
+      "answerTwo": "Mit 2",
+      "answerThree": "Mit 3 Optionen",
+      "votes": [
+        "answerOne"
+      ],
+      "id": 14
     }
   ]
 }
