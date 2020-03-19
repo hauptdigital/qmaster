@@ -11,11 +11,16 @@ import Result from './pages/Result';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
+  const [theme, setTheme] = React.useState(dark);
+  function switchTheme() {
+    setTheme(theme === dark ? light : dark);
+  }
+
   return (
-    <ThemeProvider theme={light}>
+    <ThemeProvider theme={theme}>
       <Router>
         <GlobalStyles />
-        <Header />
+        <Header onSwitchThemeImgClick={switchTheme} />
         <main className="main">
           <Switch>
             <Route exact path="/">
