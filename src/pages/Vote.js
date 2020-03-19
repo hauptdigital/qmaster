@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import Button from '../components/Button';
 import Container from '../components/Container';
 import { getPoll, patchPoll } from '../api/polls';
+import LoadingGif from '../components/Pulse-1s-200px.gif';
 
 const Input = styled.input`
   background-color: ${props => props.theme.colors.secondary};
@@ -62,18 +63,20 @@ const VoteInputListItem = styled.li`
   list-style-type: none;
 `;
 
+const Loading = styled.div``;
+
 function Vote() {
   const { pollId } = useParams();
   const history = useHistory();
   const [poll, setPoll] = React.useState(null);
   const [answer, setAnswer] = React.useState(null);
-  const [isLoading, setLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   React.useEffect(() => {
+    setIsLoading(true);
     getPoll(pollId).then(poll => {
-      setLoading(true);
       setPoll(poll);
-      setLoading(false);
+      setIsLoading(false);
     });
   }, [pollId]);
 
@@ -84,6 +87,10 @@ function Vote() {
 
     await patchPoll(pollId, newPoll);
     history.push(`/polls/${poll.id}`);
+  }
+
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
 
   return (
