@@ -55,16 +55,7 @@ const PollResultBar = styled.div`
 function Result() {
   const { pollId } = useParams();
   const percentages = [];
-
   const { poll, isLoading, errorMessage } = useGetPoll(pollId);
-
-  // React.useEffect(() => {
-  //   setIsLoading(true);
-  //   getPoll(pollId).then(poll => {
-  //     setPoll(poll);
-  //     setIsLoading(false);
-  //   });
-  // }, [pollId]);
 
   const sum = poll?.votes.length;
   const sumAnswerOne = poll?.votes.filter(

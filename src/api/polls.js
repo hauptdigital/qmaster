@@ -24,11 +24,14 @@ export async function getPoll(pollId) {
 }
 
 export async function patchPoll(pollId, newPoll) {
-  await fetch(`${POLLS_API_URL}/${pollId}`, {
+  const response = await fetch(`${POLLS_API_URL}/${pollId}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(newPoll)
   });
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
 }

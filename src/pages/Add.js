@@ -37,10 +37,16 @@ function Add() {
   const history = useHistory();
 
   const [question, setQuestion] = React.useState('');
-  const [answerOne, setAnswerOne] = React.useState('');
-  const [answerTwo, setAnswerTwo] = React.useState('');
-  const [answerThree, setAnswerThree] = React.useState('');
+  const [answer, setAnswer] = React.useState(Array(3).fill(null));
   const [isLoading, setLoading] = React.useState(false);
+
+  const numberOfOptions = 3;
+  const options = [];
+  let optionIndex;
+
+  for (optionIndex = 1; optionIndex <= numberOfOptions; optionIndex++) {
+    options.push({ optionIndex: optionIndex, option: 'Option ' + optionIndex });
+  }
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -48,9 +54,9 @@ function Add() {
 
     const poll = {
       question: question,
-      answerOne: answerOne,
-      answerTwo: answerTwo,
-      answerThree: answerThree,
+      answerOne: answer[0],
+      answerTwo: answer[1],
+      answerThree: answer[2],
       votes: []
     };
 
@@ -74,36 +80,22 @@ function Add() {
           }}
         />
         <ol>
-          <PollOptionInputListItem>
-            <PollOptionInput
-              type="text"
-              placeholder="Option 1"
-              value={answerOne}
-              onChange={event => {
-                setAnswerOne(event.target.value);
-              }}
-            />
-          </PollOptionInputListItem>
-          <PollOptionInputListItem>
-            <PollOptionInput
-              type="text"
-              placeholder="Option 2"
-              value={answerTwo}
-              onChange={event => {
-                setAnswerTwo(event.target.value);
-              }}
-            />
-          </PollOptionInputListItem>
-          <PollOptionInputListItem>
-            <PollOptionInput
-              type="text"
-              placeholder="Option 3"
-              value={answerThree}
-              onChange={event => {
-                setAnswerThree(event.target.value);
-              }}
-            />
-          </PollOptionInputListItem>
+          {options.map(function(option, optionIndex) {
+            return (
+              <PollOptionInputListItem>
+                <PollOptionInput
+                  key={option.optionIndex}
+                  type="text"
+                  placeholder={`Option ${optionIndex}`}
+                  value={answer[optionIndex]}
+                  onChange={event => {
+                    answer[optionIndex] = event.target.value;
+                    setAnswer(answer);
+                  }}
+                />
+              </PollOptionInputListItem>
+            );
+          })}
         </ol>
         <Button disabled={isLoading}>Create Poll</Button>
       </form>

@@ -74,10 +74,7 @@ function Vote() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    //setIsLoading(true);
-    const newPoll = { ...poll };
-    newPoll.votes.push(answer);
-    await patchPoll(pollId, newPoll);
+    patchPoll(pollId, poll);
     history.push(`/polls/${poll.id}`);
   }
 
