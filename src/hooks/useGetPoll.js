@@ -1,5 +1,5 @@
 import React from 'react';
-import { getPoll } from './polls';
+import { getPoll } from '../api/polls';
 
 function useGetPoll(pollId) {
   const [poll, setPoll] = React.useState(null);

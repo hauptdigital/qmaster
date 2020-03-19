@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import Button from '../components/Button';
 import Container from '../components/Container';
 import { patchPoll } from '../api/polls';
-import useGetPoll from '../api/useGetPoll';
+import useGetPoll from '../hooks/useGetPoll';
 import Loading from '../components/Loading';
 
 const Input = styled.input`
