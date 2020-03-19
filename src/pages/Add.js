@@ -37,7 +37,7 @@ function Add() {
   const history = useHistory();
 
   const [question, setQuestion] = React.useState('');
-  const [answer, setAnswer] = React.useState(Array(3).fill(null));
+  const [answers, setAnswers] = React.useState(Array(3).fill(null));
   const [isLoading, setLoading] = React.useState(false);
 
   const numberOfOptions = 3;
@@ -52,11 +52,17 @@ function Add() {
     event.preventDefault();
     setLoading(true);
 
+    // const poll = {
+    //   question: question,
+    //   answerOne: answer[0],
+    //   answerTwo: answer[1],
+    //   answerThree: answer[2],
+    //   votes: []
+    // };
+
     const poll = {
       question: question,
-      answerOne: answer[0],
-      answerTwo: answer[1],
-      answerThree: answer[2],
+      answers: answers,
       votes: []
     };
 
@@ -87,10 +93,10 @@ function Add() {
                   key={option.optionIndex}
                   type="text"
                   placeholder={`Option ${optionIndex}`}
-                  value={answer[optionIndex]}
+                  value={answers[optionIndex]}
                   onChange={event => {
-                    answer[optionIndex] = event.target.value;
-                    setAnswer(answer);
+                    answers[optionIndex] = event.target.value;
+                    setAnswers(answers);
                   }}
                 />
               </PollOptionInputListItem>

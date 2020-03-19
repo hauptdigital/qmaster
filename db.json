@@ -18,6 +18,31 @@
       "answerThree": "eee",
       "votes": [],
       "id": 2
+    },
+    {
+      "question": "okay",
+      "answers": [
+        [
+          "eee",
+          "bbb",
+          "sss"
+        ]
+      ],
+      "votes": [],
+      "id": 3
+    },
+    {
+      "question": "neuer test",
+      "answers": [
+        "1",
+        "und zwei",
+        "oder drei",
+        "oder drei"
+      ],
+      "votes": [
+        "und zwei"
+      ],
+      "id": 4
     }
   ]
 }

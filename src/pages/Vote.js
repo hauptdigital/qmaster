@@ -68,12 +68,14 @@ function Vote() {
   const { pollId } = useParams();
   const history = useHistory();
 
-  const [answer, setAnswer] = React.useState(null);
+  const [answer, setAnswer] = React.useState('');
 
   const { poll, isLoading, errorMessage } = useGetPoll(pollId);
 
   async function handleSubmit(event) {
     event.preventDefault();
+    poll.votes.push(answer);
+    console.log(poll);
     patchPoll(pollId, poll);
     history.push(`/polls/${poll.id}`);
   }
@@ -91,47 +93,26 @@ function Vote() {
       <form onSubmit={handleSubmit}>
         <VoteHeader>{poll?.question}</VoteHeader>
         <VoteInputList>
-          <VoteInputListItem>
-            <VoteInputLabel>
-              {poll?.answerOne}
-              <VoteInput
-                type="radio"
-                name="vote"
-                value="answerOne"
-                checked={answer === 'answerOne'}
-                onChange={event => setAnswer(event.target.value)}
-              />
-              <VoteInputCheck checked={answer === 'answerOne'}></VoteInputCheck>
-            </VoteInputLabel>
-          </VoteInputListItem>
-          <VoteInputListItem>
-            <VoteInputLabel>
-              {poll?.answerTwo}
-              <VoteInput
-                type="radio"
-                name="vote"
-                value="answerTwo"
-                checked={answer === 'answerTwo'}
-                onChange={event => setAnswer(event.target.value)}
-              />
-              <VoteInputCheck checked={answer === 'answerTwo'}></VoteInputCheck>
-            </VoteInputLabel>
-          </VoteInputListItem>
-          <VoteInputListItem>
-            <VoteInputLabel>
-              {poll?.answerThree}
-              <VoteInput
-                type="radio"
-                name="vote"
-                value="answerThree"
-                checked={answer === 'answerThree'}
-                onChange={event => setAnswer(event.target.value)}
-              />
-              <VoteInputCheck
-                checked={answer === 'answerThree'}
-              ></VoteInputCheck>
-            </VoteInputLabel>
-          </VoteInputListItem>
+          {poll?.answers.map(function(answerOption, answerIndex) {
+            return (
+              <VoteInputListItem>
+                <VoteInputLabel>
+                  {console.log(poll)}
+                  {answerOption}
+                  <VoteInput
+                    type="radio"
+                    name="vote"
+                    value={answerOption}
+                    checked={answer === answerOption}
+                    onChange={event => setAnswer(event.target.value)}
+                  />
+                  <VoteInputCheck
+                    checked={answer === answerOption}
+                  ></VoteInputCheck>
+                </VoteInputLabel>
+              </VoteInputListItem>
+            );
+          })}
         </VoteInputList>
         <Button disabled={isLoading}>Submit vote</Button>
       </form>
