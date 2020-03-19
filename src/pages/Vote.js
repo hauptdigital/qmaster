@@ -67,9 +67,14 @@ function Vote() {
   const history = useHistory();
   const [poll, setPoll] = React.useState(null);
   const [answer, setAnswer] = React.useState(null);
+  const [isLoading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
-    getPoll(pollId).then(poll => setPoll(poll));
+    getPoll(pollId).then(poll => {
+      setLoading(true);
+      setPoll(poll);
+      setLoading(false);
+    });
   }, [pollId]);
 
   async function handleSubmit(event) {
