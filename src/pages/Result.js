@@ -58,10 +58,15 @@ const POLLS_API_URL =
 function Result() {
   const { pollId } = useParams();
   const [poll, setPoll] = React.useState(null);
+  const [isLoading, setIsLoading] = React.useState(false);
   const percentages = [];
 
   React.useEffect(() => {
-    getPoll(pollId).then(poll => setPoll(poll));
+    setIsLoading(true);
+    getPoll(pollId).then(poll => {
+      setPoll(poll);
+      setIsLoading(false);
+    });
   }, [pollId]);
 
   const sum = poll?.votes.length;
@@ -78,7 +83,9 @@ function Result() {
   ).length;
   percentages[2] = Math.round((sumAnswerThree / sum) * 100);
 
-  console.log(percentages);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Container>
