@@ -3,6 +3,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import styled from '@emotion/styled';
 import Button from '../components/Button';
 import Container from '../components/Container';
+import { getPoll, patchPoll } from '../api/polls';
 
 const Input = styled.input`
   background-color: ${props => props.theme.colors.secondary};
@@ -61,10 +62,6 @@ const VoteInputListItem = styled.li`
   list-style-type: none;
 `;
 
-const POLLS_API_URL =
-  process.env.REACT_APP_POLLS_API ||
-  'https://my-json-server.typicode.com/hauptdigital/qmaster/polls';
-
 function Vote() {
   const { pollId } = useParams();
   const history = useHistory();
@@ -72,28 +69,15 @@ function Vote() {
   const [answer, setAnswer] = React.useState(null);
 
   React.useEffect(() => {
-    async function getPoll() {
-      const response = await fetch(`${POLLS_API_URL}/${pollId}`);
-      const poll = await response.json();
-      setPoll(poll);
-      console.log(poll);
-    }
-
-    getPoll();
+    getPoll(pollId).then(poll => setPoll(poll));
   }, [pollId]);
 
   async function handleSubmit(event) {
     event.preventDefault();
     const newPoll = { ...poll };
     newPoll.votes.push(answer);
-    console.log(newPoll);
-    await fetch(`${POLLS_API_URL}/${pollId}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newPoll)
-    });
+
+    await patchPoll(pollId, newPoll);
     history.push(`/polls/${poll.id}`);
   }
 

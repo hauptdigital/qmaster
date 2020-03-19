@@ -120,7 +120,9 @@
       "answerOne": "Option 1",
       "answerTwo": "Option 2",
       "answerThree": "OOOTION 3",
-      "votes": [],
+      "votes": [
+        "answerOne"
+      ],
       "id": 13
     }
   ]
