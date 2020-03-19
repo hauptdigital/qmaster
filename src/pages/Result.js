@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import styled from '@emotion/styled';
 import Container from '../components/Container';
-import { getPoll } from '../api/polls';
+import useGetPoll from '../hooks/useGetPoll';
 import Loading from '../components/Loading';
 
 const ResultHeader = styled.div`
@@ -52,23 +52,19 @@ const PollResultBar = styled.div`
     props.percentage > 50 ? 'box-shadow: 0px 0px 20px 0px rgb(0, 0, 0);' : ''};
 `;
 
-const POLLS_API_URL =
-  process.env.REACT_APP_POLLS_API ||
-  'https://my-json-server.typicode.com/hauptdigital/qmaster/polls';
-
 function Result() {
   const { pollId } = useParams();
-  const [poll, setPoll] = React.useState(null);
-  const [isLoading, setIsLoading] = React.useState(false);
   const percentages = [];
 
-  React.useEffect(() => {
-    setIsLoading(true);
-    getPoll(pollId).then(poll => {
-      setPoll(poll);
-      setIsLoading(false);
-    });
-  }, [pollId]);
+  const { poll, isLoading, errorMessage } = useGetPoll(pollId);
+
+  // React.useEffect(() => {
+  //   setIsLoading(true);
+  //   getPoll(pollId).then(poll => {
+  //     setPoll(poll);
+  //     setIsLoading(false);
+  //   });
+  // }, [pollId]);
 
   const sum = poll?.votes.length;
   const sumAnswerOne = poll?.votes.filter(
@@ -83,6 +79,10 @@ function Result() {
     answerOption => answerOption === 'answerThree'
   ).length;
   percentages[2] = Math.round((sumAnswerThree / sum) * 100);
+
+  if (errorMessage) {
+    return <div>{errorMessage}</div>;
+  }
 
   if (isLoading) {
     return <Loading />;

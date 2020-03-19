@@ -3,7 +3,8 @@ import { useParams, useHistory } from 'react-router-dom';
 import styled from '@emotion/styled';
 import Button from '../components/Button';
 import Container from '../components/Container';
-import { getPoll, patchPoll } from '../api/polls';
+import { patchPoll } from '../api/polls';
+import useGetPoll from '../hooks/useGetPoll';
 import Loading from '../components/Loading';
 
 const Input = styled.input`
@@ -66,26 +67,22 @@ const VoteInputListItem = styled.li`
 function Vote() {
   const { pollId } = useParams();
   const history = useHistory();
-  const [poll, setPoll] = React.useState(null);
-  const [answer, setAnswer] = React.useState(null);
-  const [isLoading, setIsLoading] = React.useState(false);
 
-  React.useEffect(() => {
-    setIsLoading(true);
-    getPoll(pollId).then(poll => {
-      setPoll(poll);
-      setIsLoading(false);
-    });
-  }, [pollId]);
+  const [answer, setAnswer] = React.useState(null);
+
+  const { poll, isLoading, errorMessage } = useGetPoll(pollId);
 
   async function handleSubmit(event) {
     event.preventDefault();
-    setIsLoading(true);
+    //setIsLoading(true);
     const newPoll = { ...poll };
     newPoll.votes.push(answer);
-
     await patchPoll(pollId, newPoll);
     history.push(`/polls/${poll.id}`);
+  }
+
+  if (errorMessage) {
+    return <div>{errorMessage}</div>;
   }
 
   if (isLoading) {
