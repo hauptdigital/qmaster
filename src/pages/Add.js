@@ -4,6 +4,7 @@ import Button from '../components/Button';
 import styled from '@emotion/styled';
 import { useHistory } from 'react-router-dom';
 import { postPoll } from '../api/polls';
+import Loading from '../components/Loading';
 
 const Input = styled.input`
   background-color: ${props => props.theme.colors.secondary};
@@ -55,6 +56,10 @@ function Add() {
 
     const createdPoll = await postPoll(poll);
     history.push(`polls/${createdPoll.id}/vote/`);
+  }
+
+  if (isLoading) {
+    return <Loading />;
   }
 
   return (

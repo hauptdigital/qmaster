@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import styled from '@emotion/styled';
 import Container from '../components/Container';
 import { getPoll } from '../api/polls';
+import Loading from '../components/Loading';
 
 const ResultHeader = styled.div`
   background-color: ${props => props.theme.colors.secondary};
@@ -84,7 +85,7 @@ function Result() {
   percentages[2] = Math.round((sumAnswerThree / sum) * 100);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (

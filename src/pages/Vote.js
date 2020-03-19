@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import Button from '../components/Button';
 import Container from '../components/Container';
 import { getPoll, patchPoll } from '../api/polls';
+import Loading from '../components/Loading';
 
 const Input = styled.input`
   background-color: ${props => props.theme.colors.secondary};
@@ -88,7 +89,7 @@ function Vote() {
   }
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (

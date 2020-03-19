@@ -198,8 +198,34 @@
       "answerOne": "Value 1",
       "answerTwo": "Value 2",
       "answerThree": "Value 3",
-      "votes": [],
+      "votes": [
+        "answerOne",
+        "answerOne",
+        "answerOne",
+        "answerThree",
+        "answerOne"
+      ],
       "id": 22
+    },
+    {
+      "question": "Test",
+      "answerOne": "Alertapfel",
+      "answerTwo": "Alert birne",
+      "answerThree": "ansosnte",
+      "votes": [
+        "answerTwo"
+      ],
+      "id": 23
+    },
+    {
+      "question": "test",
+      "answerOne": "a",
+      "answerTwo": "b",
+      "answerThree": "c",
+      "votes": [
+        "answerTwo"
+      ],
+      "id": 24
     }
   ]
 }
