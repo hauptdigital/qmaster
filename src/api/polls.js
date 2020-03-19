@@ -16,6 +16,9 @@ export async function postPoll(poll) {
 
 export async function getPoll(pollId) {
   const response = await fetch(`${POLLS_API_URL}/${pollId}`);
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
   const poll = await response.json();
   return poll;
 }
