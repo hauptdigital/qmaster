@@ -79,7 +79,9 @@
       "answerOne": "Ja",
       "answerTwo": "Nein",
       "answerThree": "Vielleicht",
-      "votes": ["answerTwo"],
+      "votes": [
+        "answerTwo"
+      ],
       "id": 9
     },
     {
@@ -87,7 +89,10 @@
       "answerOne": "Funktioniert noch alles? ",
       "answerTwo": "Ist das so?",
       "answerThree": "Ja?",
-      "votes": ["answerTwo", "answerTwo"],
+      "votes": [
+        "answerTwo",
+        "answerTwo"
+      ],
       "id": 10
     },
     {
@@ -95,7 +100,9 @@
       "answerOne": "okay",
       "answerTwo": "okay",
       "answerThree": "okay",
-      "votes": ["answerOne"],
+      "votes": [
+        "answerOne"
+      ],
       "id": 11
     },
     {
@@ -103,8 +110,32 @@
       "answerOne": "Das ist ein Test",
       "answerTwo": "Okay2",
       "answerThree": "Oka3",
-      "votes": ["answerTwo"],
+      "votes": [
+        "answerTwo"
+      ],
       "id": 12
+    },
+    {
+      "question": "Dies ist ein Test",
+      "answerOne": "Option 1",
+      "answerTwo": "Option 2",
+      "answerThree": "OOOTION 3",
+      "votes": [
+        "answerOne",
+        "answerThree",
+        "answerTwo"
+      ],
+      "id": 13
+    },
+    {
+      "question": "Ein neuer Poll",
+      "answerOne": "Mit 1",
+      "answerTwo": "Mit 2",
+      "answerThree": "Mit 3 Optionen",
+      "votes": [
+        "answerOne"
+      ],
+      "id": 14
     }
   ]
 }

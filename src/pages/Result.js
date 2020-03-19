@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import styled from '@emotion/styled';
 import Container from '../components/Container';
+import { getPoll } from '../api/polls';
 
 const ResultHeader = styled.div`
   background-color: ${props => props.theme.colors.secondary};
@@ -60,12 +61,7 @@ function Result() {
   const percentages = [];
 
   React.useEffect(() => {
-    async function getPoll() {
-      const response = await fetch(`${POLLS_API_URL}/${pollId}`);
-      const poll = await response.json();
-      setPoll(poll);
-    }
-    getPoll();
+    getPoll(pollId).then(poll => setPoll(poll));
   }, [pollId]);
 
   const sum = poll?.votes.length;

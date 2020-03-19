@@ -3,6 +3,7 @@ import Container from '../components/Container';
 import Button from '../components/Button';
 import styled from '@emotion/styled';
 import { useHistory } from 'react-router-dom';
+import { postPoll } from '../api/polls';
 
 const Input = styled.input`
   background-color: ${props => props.theme.colors.secondary};
@@ -49,18 +50,8 @@ function Add() {
       answerThree: answerThree,
       votes: []
     };
-    const response = await fetch(
-      process.env.REACT_APP_POLLS_API ||
-        'https://my-json-server.typicode.com/hauptdigital/qmaster/polls',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(poll)
-      }
-    );
-    const createdPoll = await response.json();
+
+    const createdPoll = await postPoll(poll);
     history.push(`polls/${createdPoll.id}/vote/`);
   }
 
